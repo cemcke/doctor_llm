@@ -13,7 +13,7 @@ from langchain.prompts import PromptTemplate
 def load_chain():
     # 加载问答链
     # 定义 Embeddings
-    embeddings = HuggingFaceEmbeddings(model_name="/root/model/sentence-transformer")
+    embeddings = HuggingFaceEmbeddings(model_name="/home/xlab-app-center/model/sentence-transformer")
 
     # 向量数据库持久化路径
     persist_directory = 'data_base/vector_db/chroma'
@@ -24,9 +24,9 @@ def load_chain():
         embedding_function=embeddings
     )
 
-    llm = InternLM_LLM(model_path = "/root/model/Shanghai_AI_Laboratory/internlm-chat-7b")
+    llm = InternLM_LLM(model_path = "/home/xlab-app-center/model/internlm-chat-7b")
 
-    template = """使用以下上下文来回答用户的问题。如果你不知道答案，就说你不知道。总是使用中文回答。
+    template = """你作为一个内科医疗助手，使用以下上下文来回答用户的问题。如果你不知道答案，就说你不知道。总是使用中文回答。
     问题: {question}
     可参考的上下文：
     ···
@@ -67,8 +67,21 @@ class Model_center():
             return "", chat_history
         except Exception as e:
             return e, chat_history
+import os
 
+# 设置环境变量
+os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 
+# 下载模型
+os.system('huggingface-cli download --resume-download sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 --local-dir /home/xlab-app-center/model/sentence-transformer')
+
+# 将模型导入
+from openxlab.model import download
+download(model_repo='OpenLMLab/InternLM-chat-7b', output='/home/xlab-app-center/model/InternLM-chat-7b')
+
+import gradio as gr
+            
+#实例化核心功能对象
 model_center = Model_center()
 
 block = gr.Blocks()
