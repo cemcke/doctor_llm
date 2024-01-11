@@ -1,5 +1,5 @@
 # 首先导入所需第三方库
-import codecs
+
 from langchain.document_loaders import UnstructuredFileLoader
 from langchain.document_loaders import UnstructuredMarkdownLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
