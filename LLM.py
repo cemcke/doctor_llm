@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-'''
-@File    :   llm.py
-@Time    :   2023/10/16 18:53:26
-@Author  :   Logan Zou 
-@Version :   1.0
-@Contact :   loganzou0421@163.com
-@License :   (C)Copyright 2017-2018, Liugroup-NLPR-CASIA
-@Desc    :   基于InternLM模型自定义 LLM 类
-'''
 
 from langchain.llms.base import LLM
 from typing import Any, List, Optional
@@ -47,7 +36,3 @@ class InternLM_LLM(LLM):
     def _llm_type(self) -> str:
         return "InternLM"
     
-if __name__ == "__main__":
-    # 测试代码
-    llm = InternLM_LLM(model_path = "/root/model/Shanghai_AI_Laboratory/internlm-chat-7b")
-    print(llm.predict("你是谁"))
