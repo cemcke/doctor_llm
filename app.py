@@ -24,7 +24,7 @@ def load_chain():
         embedding_function=embeddings
     )
 
-    llm = InternLM_LLM(model_path = "/home/xlab-app-center/model/internlm-chat-7b")
+    llm = InternLM_LLM(model_path = "/home/xlab-app-center/model/InternLM-chat-7b")
 
     template = """你作为一个内科医疗助手，使用以下上下文来回答用户的问题。如果你不知道答案，就说你不知道。总是使用中文回答。
     问题: {question}
