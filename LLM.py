@@ -35,4 +35,9 @@ class InternLM_LLM(LLM):
     @property
     def _llm_type(self) -> str:
         return "InternLM"
+        
+if __name__ == "__main__":
+    # 测试代码
+    llm = InternLM_LLM(model_path = "/home/xlab-app-center/InternLM-chat-7b")
+    print(llm.predict("你是谁"))
     
