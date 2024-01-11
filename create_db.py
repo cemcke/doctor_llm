@@ -45,7 +45,7 @@ def get_text(dir_path):
 
 # 目标文件夹
 tar_dir = [
-    "/root/code/medical",
+    "./medical",
 
 ]
 
